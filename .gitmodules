@@ -1,0 +1,3 @@
+[submodule "docs/etd"]
+	path = docs/etd
+	url = https://github.com/EOSIO/eos-token-distribution

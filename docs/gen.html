@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="./etd/docs/ecc.js"></script>
+  <script>
+    const genKeyPair = (seed) => {
+      const priv = eos_ecc.PrivateKey.fromSeed(seed);
+      const privWif = priv.toWif();
+      const adress = priv.toPublicKey().toString();
+      return {
+        privWif,
+        adress
+      }
+    }
+
+    function generate() {
+      var seed = document.getElementById('form').value;
+      const {
+        privWif,
+        adress
+      } = genKeyPair(seed);
+ document.getElementById('private').innerHTML = 'Private key: ' + privWif;
+ document.getElementById('public').innerHTML = 'Public key: ' + adress;
+    }
+  </script>
+</head>
+
+<body>
+  Seed:
+  <input type="text" id="form" name="fname">
+  <button onclick="generate()">Generate</button>
+  <br>
+  <h4 id="private"></h4>
+  <h4 id="public"></h4>
+</body>
+
+</html>
